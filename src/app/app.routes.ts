@@ -1,11 +1,16 @@
-import { Routes } from '@angular/router';
-import { PostListComponent } from '@components/post-list/post-list.component';
-import { PostItemComponent } from '@components/post-item/post-item.component';
-import { AuthentificationComponent } from '@components/authentification/authentification.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
 
-export const routes: Routes = [
-  { path: 'posts-liste', component: PostListComponent },
-  { path: 'post-item', component: PostItemComponent },
-  { path: 'login', component: AuthentificationComponent },
-  { path: '', redirectTo: '/posts-liste', pathMatch: 'full' }  
-]
+const routes: Routes = [
+  { path: '', redirectTo: '/post-list', pathMatch: 'full' },
+  { path: 'post-list', component: PostListComponent },
+  { path: 'authentification', component: AuthentificationComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
